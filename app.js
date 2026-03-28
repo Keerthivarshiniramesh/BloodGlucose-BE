@@ -5,6 +5,7 @@ const Session = require('express-session');
 const AuthRouter = require('./routes/AuthRouter');
 const CognitiveRouters = require('./routes/CognitiveRouter')
 const MongoDbSession = require('connect-mongodb-session')(Session);
+const ThinkSpeakFeeds = require('./routes/ThinkSpeakFeeds')
 require('dotenv').config();
 
 const app = Express();
@@ -53,3 +54,4 @@ app.use(Session({
 
 app.use(AuthRouter)
 app.use(CognitiveRouters)
+app.use(ThinkSpeakFeeds)
