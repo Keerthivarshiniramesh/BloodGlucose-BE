@@ -7,6 +7,7 @@ const CognitiveRouters = require('./routes/CognitiveRouter')
 const MongoDbSession = require('connect-mongodb-session')(Session);
 const ThinkSpeakFeeds = require('./routes/ThinkSpeakFeeds')
 require('dotenv').config();
+const { trainModel } = require("./ai/model");
 
 const app = Express();
 const port = process.env.Port || 4000;
@@ -38,6 +39,7 @@ const store = new MongoDbSession({
     uri: process.env.MongoDBURI,
     collection: 'sessions'
 })
+trainModel();
 
 
 app.use(Session({
